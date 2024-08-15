@@ -17,7 +17,7 @@ resource "aws_lb" "alb" {
 resource "aws_lb_listener" "alb" {
   load_balancer_arn = aws_lb.alb.arn
   port              = 80
-  protocol          = "HTTP"
+  protocol          = "TCP"
 
   default_action {
     type = "fixed-response"
@@ -28,6 +28,9 @@ resource "aws_lb_listener" "alb" {
     }
   }
 }
+
+# Listener Rule
+
 
 # Security group resource
 resource "aws_security_group" "lb_sg" {
