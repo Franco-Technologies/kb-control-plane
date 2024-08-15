@@ -49,7 +49,7 @@ module "ssm" {
   ]
   source = "./modules/ssm"
 
-  # Environment-specific variables
+  # Environment-specific variables 
   param_name = "/${var.app_name}-cpservice/${local.env}/appvars"
   outputs = {
     vpc_id                      = module.vpc.vpc_id
