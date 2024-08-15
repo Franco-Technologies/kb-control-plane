@@ -27,8 +27,8 @@ module "load_balancer" {
 module "api_gateway" {
   source = "./modules/api_gateway"
   # Environment-specific variables
-  rest_api_id   = local.app_vars_decoded.rest_api_id
-  parent_id     = local.app_vars_decoded.parent_id
+  rest_api_id   = local.app_vars_decoded.api_gateway_rest_api_id
+  parent_id     = local.app_vars_decoded.api_gateway_root_resource_id
   authorizer_id = local.app_vars_decoded.authorizer_id
   nlb_dns_name  = module.load_balancer.nlb_dns_name
   nlb_arn       = module.load_balancer.nlb_arn
@@ -62,8 +62,8 @@ module "ssm" {
     load_balancer_sg_id         = module.load_balancer.security_group_id
     listener_arn                = module.load_balancer.listener_arn
     load_balancer_arn           = module.load_balancer.load_balancer_arn
-    api_gateway_id              = local.app_vars_decoded.rest_api_id
-    api_gateway_root_resource   = local.app_vars_decoded.parent_id
+    api_gateway_id              = local.app_vars_decoded.api_gateway_rest_api_id
+    api_gateway_root_resource   = local.app_vars_decoded.api_gateway_root_resource_id
     api_gateway_authorizer_id   = local.app_vars_decoded.authorizer_id
   }
 }
