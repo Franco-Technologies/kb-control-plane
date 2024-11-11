@@ -31,3 +31,4 @@ The pipeline performs the following actions:
 - Initializes the Terraform configuration.
 - Plans the Terraform deployment.
 - Applies the Terraform configuration to provision the infrastructure.
+- The app name is used to retrieve API Gateway details and other configuration details from AWS SSM.
